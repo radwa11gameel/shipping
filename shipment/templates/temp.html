@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        table, th, td { border: 1px solid #ddd; }
+        th, td { padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        h2 { border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>All Data</h1>
+    
+    <a href="{% url 'download_pdf' %}">Download as PDF</a>
+   
+    <h2>Companies</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Post Code</th>
+                <th>Type</th>
+                <th>Contact Info</th>
+                <th>Website</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for company in companies %}
+            <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.address }}</td>
+                <td>{{ company.post_code }}</td>
+                <td>{{ company.get_type_display }}</td>
+                <td>{{ company.contact_info }}</td>
+                <td>{{ company.website }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Types</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for type in types %}
+            <tr>
+                <td>{{ type.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Invoices</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Invoice Number</th>
+                <th>Invoice Date</th>
+                <th>Status</th>
+                <th>Proforma Invoice</th>
+                <th>Date Issued</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Gross Weight</th>
+                <th>Net Weight</th>
+                <th>Price Per KG</th>
+                <th>Payment To</th>
+                <th>Amount</th>
+                <th>Location</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.invoice_number }}</td>
+                <td>{{ invoice.invoice_date }}</td>
+                <td>{{ invoice.invoice_status }}</td>
+                <td>{{ invoice.proforma_invoice }}</td>
+                <td>{{ invoice.date_issued }}</td>
+                
+                <td>{{ invoice.type.name }}</td>
+                <td>{{ invoice.quantity }}</td>
+                <td>{{ invoice.gross }}</td>
+                <td>{{ invoice.net }}</td>
+                <td>{{ invoice.price_per_kg }}</td>
+                <td>{{ invoice.payment_to }}</td>
+                <td>{{ invoice.amount }}</td>
+                <td>{{ invoice.location }}</td>
+                <td>{{ invoice.company.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Product Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Grade</th>
+                <th>Number of Packages</th>
+                <th>Gross Weight</th>
+                <th>Net Weight</th>
+                <th>Price Per KG</th>
+                <th>Amount</th>
+                <th>Invoice</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product_detail in product_details %}
+            <tr>
+                <td>{{ product_detail.grade }}</td>
+                <td>{{ product_detail.number_of_packages }}</td>
+                <td>{{ product_detail.gross_weight }}</td>
+                <td>{{ product_detail.net_weight }}</td>
+                <td>{{ product_detail.price_per_kg }}</td>
+                <td>{{ product_detail.amount }}</td>
+                <td>{{ product_detail.invoice.invoice_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    
+    <h2>Bank Details</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Bank Name</th>
+                <th>Bank Address</th>
+                <th>Account Number</th>
+                <th>Account Name</th>
+                <th>Swift</th>
+                <th>IBAN</th>
+                <th>Reference Number</th>
+                <th>Company</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bank_detail in bank_details %}
+            <tr>
+                <td>{{ bank_detail.bank_name }}</td>
+                <td>{{ bank_detail.bank_address }}</td>
+                <td>{{ bank_detail.account_number }}</td>
+                <td>{{ bank_detail.account_name }}</td>
+                <td>{{ bank_detail.swift }}</td>
+                <td>{{ bank_detail.iban }}</td>
+                <td>{{ bank_detail.reference_number }}</td>
+                <td>{{ bank_detail.company.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Shipments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tracking Number</th>
+                <th>Estimated Arrival</th>
+                <th>Actual Arrival</th>
+                <th>Waybill Number</th>
+                <th>Shipping Company</th>
+                <th>Current Location</th>
+                <th>Last Updated</th>
+                <th>Invoice</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shipment in shipments %}
+            <tr>
+                <td>{{ shipment.tracking_number }}</td>
+                <td>{{ shipment.estimated_arrival }}</td>
+                <td>{{ shipment.actual_arrival }}</td>
+                <td>{{ shipment.waybill_number }}</td>
+                <td>{{ shipment.shipping_company }}</td>
+                <td>{{ shipment.current_location }}</td>
+                <td>{{ shipment.last_updated }}</td>
+                <td>{{ shipment.invoice.invoice_number }}</td>
+                <td>{{ shipment.total_amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <h2>Status Updates</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Update Date</th>
+                <th>Updated By</th>
+                <th>Comments</th>
+                <th>Shipment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for status_update in status_updates %}
+            <tr>
+                <td>{{ status_update.status }}</td>
+                <td>{{ status_update.update_date }}</td>
+                <td>{{ status_update.updated_by.username }}</td>
+                <td>{{ status_update.comments }}</td>
+                <td>{{ status_update.shipment.tracking_number }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

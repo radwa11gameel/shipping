@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #0056b3;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input, 
+        .form-group textarea, 
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-group button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .form-group button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .form-group button:active {
+            background-color: #004494;
+            transform: scale(1);
+        }
+        .form-group button:focus {
+            outline: none;
+            box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+        }
+        .form-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Data for Models</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-section">
+                <h2>Company</h2>
+                <div class="form-group">
+                    {{ company_form.as_p }}
+                </div>
+                <button type="submit" name="submit_company" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Company
+                </button>
+            </div>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-section">
+                <h2>Type</h2>
+                <div class="form-group">
+                    
+                    {{ Type_form.as_p }}
+                </div>
+                <button type="submit" name="submit_type" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Type
+                </button>
+            </div>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-section">
+                <h2>Invoice</h2>
+                <div class="form-group">
+                    {{ invoice_form.as_p }}
+                </div>
+                <button type="submit" name="submit_invoice" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Invoice
+                </button>
+            </div>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-section">
+                <h2>Product Detail</h2>
+                <div class="form-group">
+                    {{ ProductDetail_form.as_p }}
+                </div>
+                <button type="submit" name="submit_product_detail" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Product Detail
+                </button>
+            </div>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-section">
+                <h2>Bank Details</h2>
+                <div class="form-group">
+                    {{ BankDetails_form.as_p }}
+                </div>
+                <button type="submit" name="submit_bank_details" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Bank Details
+                </button>
+            </div>
+        </form>
+        
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-section">
+                <h2>Shipment</h2>
+                <div class="form-group">
+                    {{ shipment_form.as_p }}
+                </div>
+                <button type="submit" name="submit_shipment" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Shipment
+                </button>
+            </div>
+        </form>
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-section">
+                <h2>Status Update</h2>
+                <div class="form-group">
+                    {{ status_update_form.as_p }}
+                </div>
+                <button type="submit" name="submit_status_update" 
+                        style="background-color: #007BFF; color: white; border: none; 
+                               padding: 10px 20px; border-radius: 4px; cursor: pointer; 
+                               font-size: 16px; transition: background-color 0.3s, transform 0.2s; 
+                               margin-top: 10px; display: inline-block; text-transform: uppercase; 
+                               font-weight: bold;"
+                        onmouseover="this.style.backgroundColor='#0056b3'; this.style.transform='scale(1.05)';"
+                        onmouseout="this.style.backgroundColor='#007BFF'; this.style.transform='scale(1)';"
+                        onmousedown="this.style.backgroundColor='#004494';"
+                        onmouseup="this.style.backgroundColor='#007BFF';">
+                    Submit Status Update
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
